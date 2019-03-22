@@ -52,7 +52,7 @@
     
     <scm>
         <url>https://github.com/LightJason/Action-Graph</url>
-        <connection>scm:git:git://github.com:LightJason/Action-Grpah.git</connection>
+        <connection>scm:git:git://github.com:LightJason/Action-Graph.git</connection>
         <developerConnection>scm:git:git@github.com:LightJason/Action-Graph.git</developerConnection>
         <tag>v0.0.1</tag>
     </scm>
