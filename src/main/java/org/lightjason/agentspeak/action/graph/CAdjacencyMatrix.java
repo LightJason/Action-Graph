@@ -24,6 +24,7 @@
 package org.lightjason.agentspeak.action.graph;
 
 import cern.colt.matrix.tdouble.DoubleMatrix2D;
+import cern.colt.matrix.tdouble.algo.DenseDoubleAlgebra;
 import cern.colt.matrix.tdouble.impl.DenseDoubleMatrix2D;
 import cern.colt.matrix.tdouble.impl.SparseDoubleMatrix2D;
 import cern.jet.math.tdouble.DoubleFunctions;
@@ -33,8 +34,6 @@ import edu.uci.ics.jung.graph.UndirectedGraph;
 import org.apache.commons.lang3.tuple.ImmutablePair;
 import org.apache.commons.lang3.tuple.Pair;
 import org.lightjason.agentspeak.action.IBaseAction;
-import org.lightjason.agentspeak.action.blas.EType;
-import org.lightjason.agentspeak.action.blas.IBaseAlgebra;
 import org.lightjason.agentspeak.common.IPath;
 import org.lightjason.agentspeak.language.CCommon;
 import org.lightjason.agentspeak.language.CRawTerm;
@@ -108,12 +107,12 @@ public final class CAdjacencyMatrix extends IBaseAction
     )
     {
         // --- filter parameters ---
-        final EType l_type = CCommon.flatten( p_argument )
+        final EBlasType l_type = CCommon.flatten( p_argument )
                                     .filter( i -> CCommon.isssignableto( i, String.class ) )
                                     .findFirst()
                                     .map( ITerm::<String>raw )
-                                    .map( EType::of )
-                                    .orElse( EType.SPARSE );
+                                    .map( EBlasType::of )
+                                    .orElse( EBlasType.SPARSE );
 
         final double l_defaultcost = CCommon.flatten( p_argument )
                                             .filter( i -> CCommon.isssignableto( i, Number.class ) )
@@ -153,7 +152,7 @@ public final class CAdjacencyMatrix extends IBaseAction
      * @return pair of double matrix and vertices
      */
     private static Pair<DoubleMatrix2D, Collection<?>> apply( @Nonnull final Graph<Object, Object> p_graph, @Nonnull final Map<?, Number> p_cost,
-                                                              final double p_defaultcost, @Nonnull final EType p_type
+                                                              final double p_defaultcost, @Nonnull final EBlasType p_type
     )
     {
         // index map for matching vertex to index position within matrix
@@ -195,7 +194,7 @@ public final class CAdjacencyMatrix extends IBaseAction
 
         // on undirected graphs, add the transposefor cost duplicating
         if ( p_graph instanceof UndirectedGraph<?, ?> )
-            l_matrix.assign( IBaseAlgebra.DENSEALGEBRA.transpose( l_matrix ).copy(), DoubleFunctions.plus );
+            l_matrix.assign( DenseDoubleAlgebra.DEFAULT.transpose( l_matrix ).copy(), DoubleFunctions.plus );
 
         return new ImmutablePair<>( l_matrix, new ArrayList<>( l_index.keySet() ) );
     }
