@@ -63,7 +63,7 @@ public abstract class IApplySingle extends IBaseAction
                .skip( this.skipsize() )
                .forEach( i -> this.apply( p_parallel, i.<Graph<Object, Object>>raw(), p_argument.subList( 0, this.skipsize() ), p_return ) );
 
-        return Stream.of();
+        return Stream.empty();
     }
 
     /**

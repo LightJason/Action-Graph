@@ -67,7 +67,7 @@ public abstract class IApplyMultiple extends IBaseAction
         )
                    .forEach( i -> this.apply( p_parallel, p_argument.get( 0 ).<Graph<Object, Object>>raw(), i, p_return ) );
 
-        return Stream.of();
+        return Stream.empty();
     }
 
 

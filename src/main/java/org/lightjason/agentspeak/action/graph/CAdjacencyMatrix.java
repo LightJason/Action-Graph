@@ -139,7 +139,7 @@ public final class CAdjacencyMatrix extends IBaseAction
                    p_return.add( CRawTerm.of( i.getRight() ) );
                } );
 
-        return Stream.of();
+        return Stream.empty();
     }
 
     /**
