@@ -60,7 +60,7 @@ import java.util.stream.Stream;
  *
  * {@code [G1|G2] = .graph/create( "sparse", "directedsparse" );}
  *
- * @see https://en.wikipedia.org/wiki/Graph_(discrete_mathematics)
+ * @see <a href="https://en.wikipedia.org/wiki/Graph_(discrete_mathematics)"></a>
  */
 public final class CCreate extends IBaseAction
 {

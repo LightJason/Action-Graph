@@ -73,7 +73,7 @@ import java.util.stream.Stream;
  * [M1|N1|M2|N2] = .graph/adjacencymatrix( CostMap, Graph1, Graph2, "dense|sparse", );
  * }
  *
- * @see https://en.wikipedia.org/wiki/Adjacency_matrix
+ * @see <a href="https://en.wikipedia.org/wiki/Adjacency_matrix"></a>
  */
 public final class CAdjacencyMatrix extends IBaseAction
 {
