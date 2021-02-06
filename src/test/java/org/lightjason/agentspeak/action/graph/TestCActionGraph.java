@@ -31,8 +31,8 @@ import edu.uci.ics.jung.graph.Graph;
 import edu.uci.ics.jung.graph.SparseGraph;
 import edu.uci.ics.jung.graph.SparseMultigraph;
 import edu.uci.ics.jung.graph.UndirectedSparseGraph;
-import org.junit.Assert;
-import org.junit.Test;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
 import org.lightjason.agentspeak.language.CRawTerm;
 import org.lightjason.agentspeak.language.ITerm;
 import org.lightjason.agentspeak.language.execution.IContext;
@@ -70,8 +70,8 @@ public final class TestCActionGraph extends IBaseTest
             l_return
         );
 
-        Assert.assertEquals( 6, l_return.size() );
-        Assert.assertTrue( l_return.stream().map( ITerm::raw ).allMatch( i -> i instanceof Graph<?, ?> ) );
+        Assertions.assertEquals( 6, l_return.size() );
+        Assertions.assertTrue( l_return.stream().map( ITerm::raw ).allMatch( i -> i instanceof Graph<?, ?> ) );
     }
 
 
@@ -94,8 +94,8 @@ public final class TestCActionGraph extends IBaseTest
                                    Collections.emptyList()
                                ) );
 
-        Assert.assertArrayEquals( IntStream.range( 0, 5 ).boxed().toArray(), l_graph1.getVertices().toArray() );
-        Assert.assertArrayEquals( IntStream.range( 0, 5 ).boxed().toArray(), l_graph2.getVertices().toArray() );
+        Assertions.assertArrayEquals( IntStream.range( 0, 5 ).boxed().toArray(), l_graph1.getVertices().toArray() );
+        Assertions.assertArrayEquals( IntStream.range( 0, 5 ).boxed().toArray(), l_graph2.getVertices().toArray() );
     }
 
 
@@ -113,7 +113,7 @@ public final class TestCActionGraph extends IBaseTest
             Collections.emptyList()
         );
 
-        Assert.assertArrayEquals( Stream.of( "x", "y", "z" ).toArray(), l_graph.getVertices().toArray() );
+        Assertions.assertArrayEquals( Stream.of( "x", "y", "z" ).toArray(), l_graph.getVertices().toArray() );
     }
 
 
@@ -138,11 +138,11 @@ public final class TestCActionGraph extends IBaseTest
             Collections.emptyList()
         );
 
-        Assert.assertEquals( 2, l_graph.getEdgeCount() );
-        Assert.assertEquals( 1, (long) l_graph.getEndpoints( "xy" ).getFirst() );
-        Assert.assertEquals( 2, (long) l_graph.getEndpoints( "xy" ).getSecond() );
-        Assert.assertEquals( 4, (long) l_graph.getEndpoints( "bar" ).getFirst() );
-        Assert.assertEquals( 5, (long) l_graph.getEndpoints( "bar" ).getSecond() );
+        Assertions.assertEquals( 2, l_graph.getEdgeCount() );
+        Assertions.assertEquals( 1, (long) l_graph.getEndpoints( "xy" ).getFirst() );
+        Assertions.assertEquals( 2, (long) l_graph.getEndpoints( "xy" ).getSecond() );
+        Assertions.assertEquals( 4, (long) l_graph.getEndpoints( "bar" ).getFirst() );
+        Assertions.assertEquals( 5, (long) l_graph.getEndpoints( "bar" ).getSecond() );
     }
 
 
@@ -160,7 +160,7 @@ public final class TestCActionGraph extends IBaseTest
             Collections.emptyList()
         );
 
-        Assert.assertArrayEquals( Stream.of( "bar", "foo" ).toArray(), l_graph.getEdges().toArray() );
+        Assertions.assertArrayEquals( Stream.of( "bar", "foo" ).toArray(), l_graph.getEdges().toArray() );
     }
 
 
@@ -184,8 +184,8 @@ public final class TestCActionGraph extends IBaseTest
             l_return
         );
 
-        Assert.assertEquals( 1, l_return.size() );
-        Assert.assertEquals( (double) l_graph.getVertexCount(), l_return.get( 0 ).<Number>raw() );
+        Assertions.assertEquals( 1, l_return.size() );
+        Assertions.assertEquals( (double) l_graph.getVertexCount(), l_return.get( 0 ).<Number>raw() );
     }
 
 
@@ -210,8 +210,8 @@ public final class TestCActionGraph extends IBaseTest
             l_return
         );
 
-        Assert.assertEquals( 1, l_return.size() );
-        Assert.assertEquals( 4D, l_return.get( 0 ).<Number>raw() );
+        Assertions.assertEquals( 1, l_return.size() );
+        Assertions.assertEquals( 4D, l_return.get( 0 ).<Number>raw() );
     }
 
 
@@ -234,8 +234,8 @@ public final class TestCActionGraph extends IBaseTest
             l_return
         );
 
-        Assert.assertEquals( 1, l_return.size() );
-        Assert.assertArrayEquals( IntStream.range( 0, 5 ).boxed().toArray(), l_return.get( 0 ).<List<?>>raw().toArray() );
+        Assertions.assertEquals( 1, l_return.size() );
+        Assertions.assertArrayEquals( IntStream.range( 0, 5 ).boxed().toArray(), l_return.get( 0 ).<List<?>>raw().toArray() );
     }
 
 
@@ -259,8 +259,8 @@ public final class TestCActionGraph extends IBaseTest
             l_return
         );
 
-        Assert.assertEquals( 1, l_return.size() );
-        Assert.assertArrayEquals( Stream.of( "a", "b", "c", "d" ).toArray(), l_return.get( 0 ).<List<?>>raw().toArray() );
+        Assertions.assertEquals( 1, l_return.size() );
+        Assertions.assertArrayEquals( Stream.of( "a", "b", "c", "d" ).toArray(), l_return.get( 0 ).<List<?>>raw().toArray() );
     }
 
 
@@ -293,9 +293,9 @@ public final class TestCActionGraph extends IBaseTest
         );
 
 
-        Assert.assertEquals( 2, l_return.size() );
-        Assert.assertArrayEquals( Stream.of( 1, 2, 3, 4, 5, 6 ).toArray(), l_return.get( 1 ).<List<?>>raw().toArray() );
-        Assert.assertEquals( new DenseDoubleMatrix2D( new double[][]{
+        Assertions.assertEquals( 2, l_return.size() );
+        Assertions.assertArrayEquals( Stream.of( 1, 2, 3, 4, 5, 6 ).toArray(), l_return.get( 1 ).<List<?>>raw().toArray() );
+        Assertions.assertEquals( new DenseDoubleMatrix2D( new double[][]{
             {2, 1, 0, 0, 1, 0}, {1, 0, 1, 0, 1, 0}, {0, 1, 0, 1, 0, 0},
             {0, 0, 1, 0, 1, 1}, {1, 1, 0, 1, 0, 0}, {0, 0, 0, 1, 0, 0}
         } ), l_return.get( 0 ).raw() );
@@ -326,9 +326,9 @@ public final class TestCActionGraph extends IBaseTest
             l_return
         );
 
-        Assert.assertEquals( 2, l_return.size() );
-        Assert.assertTrue( l_return.get( 0 ).<Boolean>raw() );
-        Assert.assertFalse( l_return.get( 1 ).<Boolean>raw() );
+        Assertions.assertEquals( 2, l_return.size() );
+        Assertions.assertTrue( l_return.get( 0 ).<Boolean>raw() );
+        Assertions.assertFalse( l_return.get( 1 ).<Boolean>raw() );
     }
 
 
@@ -356,9 +356,9 @@ public final class TestCActionGraph extends IBaseTest
             l_return
         );
 
-        Assert.assertEquals( 2, l_return.size() );
-        Assert.assertFalse( l_return.get( 0 ).<Boolean>raw() );
-        Assert.assertTrue( l_return.get( 1 ).<Boolean>raw() );
+        Assertions.assertEquals( 2, l_return.size() );
+        Assertions.assertFalse( l_return.get( 0 ).<Boolean>raw() );
+        Assertions.assertTrue( l_return.get( 1 ).<Boolean>raw() );
     }
 
 
@@ -393,7 +393,7 @@ public final class TestCActionGraph extends IBaseTest
             l_return
         );
 
-        Assert.assertArrayEquals( Stream.of( 3D, 3D, 2D, 3D, 3D, 1D ).toArray(), l_return.stream().map( ITerm::raw ).toArray() );
+        Assertions.assertArrayEquals( Stream.of( 3D, 3D, 2D, 3D, 3D, 1D ).toArray(), l_return.stream().map( ITerm::raw ).toArray() );
     }
 
 
@@ -421,7 +421,7 @@ public final class TestCActionGraph extends IBaseTest
             l_return
         );
 
-        Assert.assertArrayEquals( Stream.of( 3D, 2D ).toArray(), l_return.stream().map( ITerm::raw ).toArray() );
+        Assertions.assertArrayEquals( Stream.of( 3D, 2D ).toArray(), l_return.stream().map( ITerm::raw ).toArray() );
     }
 
 
@@ -445,8 +445,8 @@ public final class TestCActionGraph extends IBaseTest
             l_return
         );
 
-        Assert.assertEquals( 1, l_return.size() );
-        Assert.assertEquals( 6D, l_return.get( 0 ).<Number>raw() );
+        Assertions.assertEquals( 1, l_return.size() );
+        Assertions.assertEquals( 6D, l_return.get( 0 ).<Number>raw() );
     }
 
     /**
@@ -469,7 +469,7 @@ public final class TestCActionGraph extends IBaseTest
             l_return
         );
 
-        Assert.assertArrayEquals( Stream.of( "mb", "nb", "ob" ).toArray(), l_return.get( 0 ).<List<?>>raw().toArray() );
+        Assertions.assertArrayEquals( Stream.of( "mb", "nb", "ob" ).toArray(), l_return.get( 0 ).<List<?>>raw().toArray() );
     }
 
 
@@ -507,8 +507,8 @@ public final class TestCActionGraph extends IBaseTest
         l_graph.addEdge( "spanningtreeedge19", 1, 9 );
         l_graph.addEdge( "spanningtreeedge29", 2, 9 );
 
-        Assert.assertEquals( l_graph.getEdgeCount(), 21 );
-        Assert.assertEquals( l_graph.getVertexCount(), 10 );
+        Assertions.assertEquals( l_graph.getEdgeCount(), 21 );
+        Assertions.assertEquals( l_graph.getVertexCount(), 10 );
 
         new CSpanningTree().execute(
             false, IContext.EMPTYPLAN,
@@ -516,7 +516,7 @@ public final class TestCActionGraph extends IBaseTest
             l_return
         );
 
-        Assert.assertArrayEquals(
+        Assertions.assertArrayEquals(
             Stream.of( "spanningtreeedge19", "spanningtreeedge710", "spanningtreeedge68", "spanningtreeedge46", "spanningtreeedge24", "spanningtreeedge89",
                        "spanningtreeedge45", "spanningtreeedge23", "spanningtreeedge67" ).toArray(),
             l_return.get( 0 ).<Graph<Integer, String>>raw().getEdges().toArray()
@@ -558,7 +558,7 @@ public final class TestCActionGraph extends IBaseTest
             l_return
         );
 
-        Assert.assertArrayEquals(
+        Assertions.assertArrayEquals(
             Stream.of( "spanningtreeedge910", "spanningtreeedge12", "spanningtreeedge56", "spanningtreeedge45", "spanningtreeedge34", "spanningtreeedge89",
                        "spanningtreeedge78", "spanningtreeedge26", "spanningtreeedge28" ).toArray(),
             l_return.get( 1 ).<Graph<Integer, String>>raw().getEdges().toArray()
@@ -586,7 +586,7 @@ public final class TestCActionGraph extends IBaseTest
             l_return
         );
 
-        Assert.assertArrayEquals( Stream.of( "search", "xxx" ).toArray(), l_return.stream().map( ITerm::raw ).toArray() );
+        Assertions.assertArrayEquals( Stream.of( "search", "xxx" ).toArray(), l_return.stream().map( ITerm::raw ).toArray() );
     }
 
 
@@ -611,7 +611,7 @@ public final class TestCActionGraph extends IBaseTest
             l_return
         );
 
-        Assert.assertArrayEquals( Stream.of( "edge12", "edge23", "edge34" ).toArray(), l_return.stream().map( ITerm::raw ).toArray() );
+        Assertions.assertArrayEquals( Stream.of( "edge12", "edge23", "edge34" ).toArray(), l_return.stream().map( ITerm::raw ).toArray() );
     }
 
 
@@ -637,9 +637,9 @@ public final class TestCActionGraph extends IBaseTest
             l_return
         );
 
-        Assert.assertEquals( 2, l_return.size() );
-        Assert.assertArrayEquals( Stream.of( "edgeAA1", "edgeA1" ).toArray(), l_return.get( 0 ).<List<?>>raw().toArray() );
-        Assert.assertArrayEquals( Stream.of( "edgeA2" ).toArray(), l_return.get( 1 ).<List<?>>raw().toArray() );
+        Assertions.assertEquals( 2, l_return.size() );
+        Assertions.assertArrayEquals( Stream.of( "edgeAA1", "edgeA1" ).toArray(), l_return.get( 0 ).<List<?>>raw().toArray() );
+        Assertions.assertArrayEquals( Stream.of( "edgeA2" ).toArray(), l_return.get( 1 ).<List<?>>raw().toArray() );
 
 
         l_return.clear();
@@ -650,11 +650,11 @@ public final class TestCActionGraph extends IBaseTest
             l_return
         );
 
-        Assert.assertEquals( 2, l_return.size() );
-        Assert.assertArrayEquals( Stream.of( "edgeAA1", "edgeA1" ).toArray(), l_return.get( 0 ).<List<?>>raw().toArray() );
-        Assert.assertArrayEquals( Stream.of( "edgeA2" ).toArray(), l_return.get( 1 ).<List<?>>raw().toArray() );
-        Assert.assertEquals( Collections.synchronizedList( Collections.emptyList() ).getClass(), l_return.get( 0 ).raw().getClass() );
-        Assert.assertEquals( Collections.synchronizedList( Collections.emptyList() ).getClass(), l_return.get( 1 ).raw().getClass() );
+        Assertions.assertEquals( 2, l_return.size() );
+        Assertions.assertArrayEquals( Stream.of( "edgeAA1", "edgeA1" ).toArray(), l_return.get( 0 ).<List<?>>raw().toArray() );
+        Assertions.assertArrayEquals( Stream.of( "edgeA2" ).toArray(), l_return.get( 1 ).<List<?>>raw().toArray() );
+        Assertions.assertEquals( Collections.synchronizedList( Collections.emptyList() ).getClass(), l_return.get( 0 ).raw().getClass() );
+        Assertions.assertEquals( Collections.synchronizedList( Collections.emptyList() ).getClass(), l_return.get( 1 ).raw().getClass() );
     }
 
 
@@ -679,9 +679,9 @@ public final class TestCActionGraph extends IBaseTest
             l_return
         );
 
-        Assert.assertEquals( 2, l_return.size() );
-        Assert.assertArrayEquals( Stream.of( "p", "o" ).toArray(), l_return.get( 0 ).<List<?>>raw().toArray() );
-        Assert.assertArrayEquals( Stream.of( "q", "r", "s" ).toArray(), l_return.get( 1 ).<List<?>>raw().toArray() );
+        Assertions.assertEquals( 2, l_return.size() );
+        Assertions.assertArrayEquals( Stream.of( "p", "o" ).toArray(), l_return.get( 0 ).<List<?>>raw().toArray() );
+        Assertions.assertArrayEquals( Stream.of( "q", "r", "s" ).toArray(), l_return.get( 1 ).<List<?>>raw().toArray() );
 
 
         l_return.clear();
@@ -692,11 +692,11 @@ public final class TestCActionGraph extends IBaseTest
             l_return
         );
 
-        Assert.assertEquals( 2, l_return.size() );
-        Assert.assertArrayEquals( Stream.of( "p", "o" ).toArray(), l_return.get( 0 ).<List<?>>raw().toArray() );
-        Assert.assertArrayEquals( Stream.of( "q", "r", "s" ).toArray(), l_return.get( 1 ).<List<?>>raw().toArray() );
-        Assert.assertEquals( Collections.synchronizedList( Collections.emptyList() ).getClass(), l_return.get( 0 ).raw().getClass() );
-        Assert.assertEquals( Collections.synchronizedList( Collections.emptyList() ).getClass(), l_return.get( 1 ).raw().getClass() );
+        Assertions.assertEquals( 2, l_return.size() );
+        Assertions.assertArrayEquals( Stream.of( "p", "o" ).toArray(), l_return.get( 0 ).<List<?>>raw().toArray() );
+        Assertions.assertArrayEquals( Stream.of( "q", "r", "s" ).toArray(), l_return.get( 1 ).<List<?>>raw().toArray() );
+        Assertions.assertEquals( Collections.synchronizedList( Collections.emptyList() ).getClass(), l_return.get( 0 ).raw().getClass() );
+        Assertions.assertEquals( Collections.synchronizedList( Collections.emptyList() ).getClass(), l_return.get( 1 ).raw().getClass() );
     }
 
 
@@ -719,8 +719,8 @@ public final class TestCActionGraph extends IBaseTest
             l_return
         );
 
-        Assert.assertEquals( 4, l_return.size() );
-        Assert.assertArrayEquals( Stream.of( 1, 2, 2, 3 ).toArray(), l_return.stream().map( ITerm::raw ).toArray() );
+        Assertions.assertEquals( 4, l_return.size() );
+        Assertions.assertArrayEquals( Stream.of( 1, 2, 2, 3 ).toArray(), l_return.stream().map( ITerm::raw ).toArray() );
     }
 
 
@@ -743,8 +743,8 @@ public final class TestCActionGraph extends IBaseTest
             l_return
         );
 
-        Assert.assertEquals( 4, l_return.size() );
-        Assert.assertArrayEquals( Stream.of( 1, 2, 4, 3 ).toArray(), l_return.stream().map( ITerm::raw ).toArray() );
+        Assertions.assertEquals( 4, l_return.size() );
+        Assertions.assertArrayEquals( Stream.of( 1, 2, 4, 3 ).toArray(), l_return.stream().map( ITerm::raw ).toArray() );
     }
 
 
@@ -770,8 +770,8 @@ public final class TestCActionGraph extends IBaseTest
             l_return
         );
 
-        Assert.assertEquals( 2, l_return.size() );
-        Assert.assertArrayEquals( Stream.of( 2D, 3D ).toArray(), l_return.stream().map( ITerm::raw ).toArray() );
+        Assertions.assertEquals( 2, l_return.size() );
+        Assertions.assertArrayEquals( Stream.of( 2D, 3D ).toArray(), l_return.stream().map( ITerm::raw ).toArray() );
     }
 
 
@@ -794,8 +794,8 @@ public final class TestCActionGraph extends IBaseTest
             l_return
         );
 
-        Assert.assertEquals( 2, l_return.size() );
-        Assert.assertArrayEquals( Stream.of( 2D, 1D ).toArray(), l_return.stream().map( ITerm::raw ).toArray() );
+        Assertions.assertEquals( 2, l_return.size() );
+        Assertions.assertArrayEquals( Stream.of( 2D, 1D ).toArray(), l_return.stream().map( ITerm::raw ).toArray() );
     }
 
     /**
@@ -818,9 +818,9 @@ public final class TestCActionGraph extends IBaseTest
             l_return
         );
 
-        Assert.assertEquals( 2, l_return.size() );
-        Assert.assertArrayEquals( Stream.of( "inedgesingle1", "inedgesingle2" ).toArray(), l_return.get( 0 ).<List<?>>raw().toArray() );
-        Assert.assertArrayEquals( Stream.of( "inedgesingle3" ).toArray(), l_return.get( 1 ).<List<?>>raw().toArray() );
+        Assertions.assertEquals( 2, l_return.size() );
+        Assertions.assertArrayEquals( Stream.of( "inedgesingle1", "inedgesingle2" ).toArray(), l_return.get( 0 ).<List<?>>raw().toArray() );
+        Assertions.assertArrayEquals( Stream.of( "inedgesingle3" ).toArray(), l_return.get( 1 ).<List<?>>raw().toArray() );
 
 
         l_return.clear();
@@ -831,11 +831,11 @@ public final class TestCActionGraph extends IBaseTest
             l_return
         );
 
-        Assert.assertEquals( 2, l_return.size() );
-        Assert.assertArrayEquals( Stream.of( "inedgesingle1", "inedgesingle2" ).toArray(), l_return.get( 0 ).<List<?>>raw().toArray() );
-        Assert.assertArrayEquals( Stream.of( "inedgesingle3" ).toArray(), l_return.get( 1 ).<List<?>>raw().toArray() );
-        Assert.assertEquals( Collections.synchronizedList( Collections.emptyList() ).getClass(), l_return.get( 0 ).raw().getClass() );
-        Assert.assertEquals( Collections.synchronizedList( Collections.emptyList() ).getClass(), l_return.get( 1 ).raw().getClass() );
+        Assertions.assertEquals( 2, l_return.size() );
+        Assertions.assertArrayEquals( Stream.of( "inedgesingle1", "inedgesingle2" ).toArray(), l_return.get( 0 ).<List<?>>raw().toArray() );
+        Assertions.assertArrayEquals( Stream.of( "inedgesingle3" ).toArray(), l_return.get( 1 ).<List<?>>raw().toArray() );
+        Assertions.assertEquals( Collections.synchronizedList( Collections.emptyList() ).getClass(), l_return.get( 0 ).raw().getClass() );
+        Assertions.assertEquals( Collections.synchronizedList( Collections.emptyList() ).getClass(), l_return.get( 1 ).raw().getClass() );
     }
 
 
@@ -858,9 +858,9 @@ public final class TestCActionGraph extends IBaseTest
             l_return
         );
 
-        Assert.assertEquals( l_return.size(), 2 );
-        Assert.assertArrayEquals( Stream.of( "inedge3", "inedge4" ).toArray(), l_return.get( 0 ).<List<?>>raw().toArray() );
-        Assert.assertArrayEquals( Stream.of( "inedge5" ).toArray(), l_return.get( 1 ).<List<?>>raw().toArray() );
+        Assertions.assertEquals( l_return.size(), 2 );
+        Assertions.assertArrayEquals( Stream.of( "inedge3", "inedge4" ).toArray(), l_return.get( 0 ).<List<?>>raw().toArray() );
+        Assertions.assertArrayEquals( Stream.of( "inedge5" ).toArray(), l_return.get( 1 ).<List<?>>raw().toArray() );
 
 
         l_return.clear();
@@ -871,11 +871,11 @@ public final class TestCActionGraph extends IBaseTest
             l_return
         );
 
-        Assert.assertEquals( l_return.size(), 2 );
-        Assert.assertArrayEquals( Stream.of( "inedge3", "inedge4" ).toArray(), l_return.get( 0 ).<List<?>>raw().toArray() );
-        Assert.assertArrayEquals( Stream.of( "inedge5" ).toArray(), l_return.get( 1 ).<List<?>>raw().toArray() );
-        Assert.assertEquals( Collections.synchronizedList( Collections.emptyList() ).getClass(), l_return.get( 0 ).raw().getClass() );
-        Assert.assertEquals( Collections.synchronizedList( Collections.emptyList() ).getClass(), l_return.get( 1 ).raw().getClass() );
+        Assertions.assertEquals( l_return.size(), 2 );
+        Assertions.assertArrayEquals( Stream.of( "inedge3", "inedge4" ).toArray(), l_return.get( 0 ).<List<?>>raw().toArray() );
+        Assertions.assertArrayEquals( Stream.of( "inedge5" ).toArray(), l_return.get( 1 ).<List<?>>raw().toArray() );
+        Assertions.assertEquals( Collections.synchronizedList( Collections.emptyList() ).getClass(), l_return.get( 0 ).raw().getClass() );
+        Assertions.assertEquals( Collections.synchronizedList( Collections.emptyList() ).getClass(), l_return.get( 1 ).raw().getClass() );
     }
 
 
@@ -899,8 +899,8 @@ public final class TestCActionGraph extends IBaseTest
             l_return
         );
 
-        Assert.assertEquals( 2, l_return.size() );
-        Assert.assertArrayEquals( Stream.of( 1D, 0D ).toArray(), l_return.stream().map( ITerm::raw ).toArray() );
+        Assertions.assertEquals( 2, l_return.size() );
+        Assertions.assertArrayEquals( Stream.of( 1D, 0D ).toArray(), l_return.stream().map( ITerm::raw ).toArray() );
     }
 
 
@@ -923,8 +923,8 @@ public final class TestCActionGraph extends IBaseTest
             l_return
         );
 
-        Assert.assertEquals( 2, l_return.size() );
-        Assert.assertArrayEquals( Stream.of( 1D, 1D ).toArray(), l_return.stream().map( ITerm::raw ).toArray() );
+        Assertions.assertEquals( 2, l_return.size() );
+        Assertions.assertArrayEquals( Stream.of( 1D, 1D ).toArray(), l_return.stream().map( ITerm::raw ).toArray() );
     }
 
 
@@ -947,8 +947,8 @@ public final class TestCActionGraph extends IBaseTest
             l_return
         );
 
-        Assert.assertEquals( 2, l_return.size() );
-        Assert.assertArrayEquals( Stream.of( 2D, 2D ).toArray(), l_return.stream().map( ITerm::raw ).toArray() );
+        Assertions.assertEquals( 2, l_return.size() );
+        Assertions.assertArrayEquals( Stream.of( 2D, 2D ).toArray(), l_return.stream().map( ITerm::raw ).toArray() );
     }
 
 
@@ -970,8 +970,8 @@ public final class TestCActionGraph extends IBaseTest
             l_return
         );
 
-        Assert.assertEquals( 2, l_return.size() );
-        Assert.assertArrayEquals( Stream.of( 2D, 0D ).toArray(), l_return.stream().map( ITerm::raw ).toArray() );
+        Assertions.assertEquals( 2, l_return.size() );
+        Assertions.assertArrayEquals( Stream.of( 2D, 0D ).toArray(), l_return.stream().map( ITerm::raw ).toArray() );
     }
 
 
@@ -994,9 +994,9 @@ public final class TestCActionGraph extends IBaseTest
             l_return
         );
 
-        Assert.assertEquals( 2, l_return.size() );
-        Assert.assertArrayEquals( Stream.of( 2, 1 ).toArray(), l_return.get( 0 ).<List<?>>raw().toArray() );
-        Assert.assertArrayEquals( Stream.of( 1, 2 ).toArray(), l_return.get( 1 ).<List<?>>raw().toArray() );
+        Assertions.assertEquals( 2, l_return.size() );
+        Assertions.assertArrayEquals( Stream.of( 2, 1 ).toArray(), l_return.get( 0 ).<List<?>>raw().toArray() );
+        Assertions.assertArrayEquals( Stream.of( 1, 2 ).toArray(), l_return.get( 1 ).<List<?>>raw().toArray() );
 
 
         l_return.clear();
@@ -1007,11 +1007,11 @@ public final class TestCActionGraph extends IBaseTest
             l_return
         );
 
-        Assert.assertEquals( 2, l_return.size() );
-        Assert.assertArrayEquals( Stream.of( 2, 1 ).toArray(), l_return.get( 0 ).<List<?>>raw().toArray() );
-        Assert.assertArrayEquals( Stream.of( 1, 2 ).toArray(), l_return.get( 1 ).<List<?>>raw().toArray() );
-        Assert.assertEquals( Collections.synchronizedList( Collections.emptyList() ).getClass(), l_return.get( 0 ).raw().getClass() );
-        Assert.assertEquals( Collections.synchronizedList( Collections.emptyList() ).getClass(), l_return.get( 1 ).raw().getClass() );
+        Assertions.assertEquals( 2, l_return.size() );
+        Assertions.assertArrayEquals( Stream.of( 2, 1 ).toArray(), l_return.get( 0 ).<List<?>>raw().toArray() );
+        Assertions.assertArrayEquals( Stream.of( 1, 2 ).toArray(), l_return.get( 1 ).<List<?>>raw().toArray() );
+        Assertions.assertEquals( Collections.synchronizedList( Collections.emptyList() ).getClass(), l_return.get( 0 ).raw().getClass() );
+        Assertions.assertEquals( Collections.synchronizedList( Collections.emptyList() ).getClass(), l_return.get( 1 ).raw().getClass() );
     }
 
 
@@ -1035,9 +1035,9 @@ public final class TestCActionGraph extends IBaseTest
             l_return
         );
 
-        Assert.assertEquals( 2, l_return.size() );
-        Assert.assertArrayEquals( Stream.of( 2, 1 ).toArray(), l_return.get( 0 ).<List<?>>raw().toArray() );
-        Assert.assertArrayEquals( Stream.of( 3, 2 ).toArray(), l_return.get( 1 ).<List<?>>raw().toArray() );
+        Assertions.assertEquals( 2, l_return.size() );
+        Assertions.assertArrayEquals( Stream.of( 2, 1 ).toArray(), l_return.get( 0 ).<List<?>>raw().toArray() );
+        Assertions.assertArrayEquals( Stream.of( 3, 2 ).toArray(), l_return.get( 1 ).<List<?>>raw().toArray() );
 
 
         l_return.clear();
@@ -1048,11 +1048,11 @@ public final class TestCActionGraph extends IBaseTest
             l_return
         );
 
-        Assert.assertEquals( 2, l_return.size() );
-        Assert.assertArrayEquals( Stream.of( 2, 1 ).toArray(), l_return.get( 0 ).<List<?>>raw().toArray() );
-        Assert.assertArrayEquals( Stream.of( 3, 2 ).toArray(), l_return.get( 1 ).<List<?>>raw().toArray() );
-        Assert.assertEquals( Collections.synchronizedList( Collections.emptyList() ).getClass(), l_return.get( 0 ).raw().getClass() );
-        Assert.assertEquals( Collections.synchronizedList( Collections.emptyList() ).getClass(), l_return.get( 1 ).raw().getClass() );
+        Assertions.assertEquals( 2, l_return.size() );
+        Assertions.assertArrayEquals( Stream.of( 2, 1 ).toArray(), l_return.get( 0 ).<List<?>>raw().toArray() );
+        Assertions.assertArrayEquals( Stream.of( 3, 2 ).toArray(), l_return.get( 1 ).<List<?>>raw().toArray() );
+        Assertions.assertEquals( Collections.synchronizedList( Collections.emptyList() ).getClass(), l_return.get( 0 ).raw().getClass() );
+        Assertions.assertEquals( Collections.synchronizedList( Collections.emptyList() ).getClass(), l_return.get( 1 ).raw().getClass() );
     }
 
 
@@ -1075,7 +1075,7 @@ public final class TestCActionGraph extends IBaseTest
             l_return
         );
 
-        Assert.assertArrayEquals(
+        Assertions.assertArrayEquals(
             Stream.of( false, true ).toArray(),
             l_return.stream().map( ITerm::<Boolean>raw ).toArray()
         );
@@ -1099,7 +1099,7 @@ public final class TestCActionGraph extends IBaseTest
             l_return
         );
 
-        Assert.assertArrayEquals(
+        Assertions.assertArrayEquals(
             Stream.of( false, true ).toArray(),
             l_return.stream().map( ITerm::<Boolean>raw ).toArray()
         );
@@ -1125,7 +1125,7 @@ public final class TestCActionGraph extends IBaseTest
             l_return
         );
 
-        Assert.assertArrayEquals(
+        Assertions.assertArrayEquals(
             Stream.of( true, false ).toArray(),
             l_return.stream().map( ITerm::<Boolean>raw ).toArray()
         );
@@ -1149,7 +1149,7 @@ public final class TestCActionGraph extends IBaseTest
             l_return
         );
 
-        Assert.assertArrayEquals(
+        Assertions.assertArrayEquals(
             Stream.of( true, false ).toArray(),
             l_return.stream().map( ITerm::<Boolean>raw ).toArray()
         );
@@ -1178,7 +1178,7 @@ public final class TestCActionGraph extends IBaseTest
             l_return
         );
 
-        Assert.assertArrayEquals(
+        Assertions.assertArrayEquals(
             Stream.of( 2L, 3L ).toArray(),
             l_return.stream().map( ITerm::<Number>raw ).map( Number::longValue ).toArray()
         );
@@ -1205,7 +1205,7 @@ public final class TestCActionGraph extends IBaseTest
             l_return
         );
 
-        Assert.assertArrayEquals(
+        Assertions.assertArrayEquals(
             Stream.of( 3L, 2L ).toArray(),
             l_return.stream().map( ITerm::<Number>raw ).map( Number::longValue ).toArray()
         );
@@ -1234,7 +1234,7 @@ public final class TestCActionGraph extends IBaseTest
             l_return
         );
 
-        Assert.assertArrayEquals(
+        Assertions.assertArrayEquals(
             Stream.of( true, true ).toArray(),
             l_return.stream().map( ITerm::<Boolean>raw ).toArray()
         );
@@ -1262,7 +1262,7 @@ public final class TestCActionGraph extends IBaseTest
             l_return
         );
 
-        Assert.assertArrayEquals(
+        Assertions.assertArrayEquals(
             Stream.of( true, false, false ).toArray(),
             l_return.stream().map( ITerm::<Boolean>raw ).toArray()
         );
@@ -1291,9 +1291,9 @@ public final class TestCActionGraph extends IBaseTest
             l_return
         );
 
-        Assert.assertEquals( 2, l_return.size() );
-        Assert.assertArrayEquals( Stream.of( 2, 3 ).toArray(), l_return.get( 0 ).<List<?>>raw().toArray() );
-        Assert.assertArrayEquals( Stream.of( 2, 3, 4 ).toArray(), l_return.get( 1 ).<List<?>>raw().toArray() );
+        Assertions.assertEquals( 2, l_return.size() );
+        Assertions.assertArrayEquals( Stream.of( 2, 3 ).toArray(), l_return.get( 0 ).<List<?>>raw().toArray() );
+        Assertions.assertArrayEquals( Stream.of( 2, 3, 4 ).toArray(), l_return.get( 1 ).<List<?>>raw().toArray() );
 
 
         l_return.clear();
@@ -1304,11 +1304,11 @@ public final class TestCActionGraph extends IBaseTest
             l_return
         );
 
-        Assert.assertEquals( 2, l_return.size() );
-        Assert.assertArrayEquals( Stream.of( 2, 3 ).toArray(), l_return.get( 0 ).<List<?>>raw().toArray() );
-        Assert.assertArrayEquals( Stream.of( 2, 3, 4 ).toArray(), l_return.get( 1 ).<List<?>>raw().toArray() );
-        Assert.assertEquals( Collections.synchronizedList( Collections.emptyList() ).getClass(), l_return.get( 0 ).raw().getClass() );
-        Assert.assertEquals( Collections.synchronizedList( Collections.emptyList() ).getClass(), l_return.get( 1 ).raw().getClass() );
+        Assertions.assertEquals( 2, l_return.size() );
+        Assertions.assertArrayEquals( Stream.of( 2, 3 ).toArray(), l_return.get( 0 ).<List<?>>raw().toArray() );
+        Assertions.assertArrayEquals( Stream.of( 2, 3, 4 ).toArray(), l_return.get( 1 ).<List<?>>raw().toArray() );
+        Assertions.assertEquals( Collections.synchronizedList( Collections.emptyList() ).getClass(), l_return.get( 0 ).raw().getClass() );
+        Assertions.assertEquals( Collections.synchronizedList( Collections.emptyList() ).getClass(), l_return.get( 1 ).raw().getClass() );
     }
 
 
@@ -1333,9 +1333,9 @@ public final class TestCActionGraph extends IBaseTest
             l_return
         );
 
-        Assert.assertEquals( 2, l_return.size() );
-        Assert.assertArrayEquals( Stream.of( 2, 3, 4 ).toArray(), l_return.get( 0 ).<List<?>>raw().toArray() );
-        Assert.assertArrayEquals( Stream.of( 1 ).toArray(), l_return.get( 1 ).<List<?>>raw().toArray() );
+        Assertions.assertEquals( 2, l_return.size() );
+        Assertions.assertArrayEquals( Stream.of( 2, 3, 4 ).toArray(), l_return.get( 0 ).<List<?>>raw().toArray() );
+        Assertions.assertArrayEquals( Stream.of( 1 ).toArray(), l_return.get( 1 ).<List<?>>raw().toArray() );
 
 
         l_return.clear();
@@ -1346,11 +1346,11 @@ public final class TestCActionGraph extends IBaseTest
             l_return
         );
 
-        Assert.assertEquals( 2, l_return.size() );
-        Assert.assertArrayEquals( Stream.of( 2, 3, 4 ).toArray(), l_return.get( 0 ).<List<?>>raw().toArray() );
-        Assert.assertArrayEquals( Stream.of( 1 ).toArray(), l_return.get( 1 ).<List<?>>raw().toArray() );
-        Assert.assertEquals( Collections.synchronizedList( Collections.emptyList() ).getClass(), l_return.get( 0 ).raw().getClass() );
-        Assert.assertEquals( Collections.synchronizedList( Collections.emptyList() ).getClass(), l_return.get( 1 ).raw().getClass() );
+        Assertions.assertEquals( 2, l_return.size() );
+        Assertions.assertArrayEquals( Stream.of( 2, 3, 4 ).toArray(), l_return.get( 0 ).<List<?>>raw().toArray() );
+        Assertions.assertArrayEquals( Stream.of( 1 ).toArray(), l_return.get( 1 ).<List<?>>raw().toArray() );
+        Assertions.assertEquals( Collections.synchronizedList( Collections.emptyList() ).getClass(), l_return.get( 0 ).raw().getClass() );
+        Assertions.assertEquals( Collections.synchronizedList( Collections.emptyList() ).getClass(), l_return.get( 1 ).raw().getClass() );
     }
 
 
@@ -1376,7 +1376,7 @@ public final class TestCActionGraph extends IBaseTest
             l_return
         );
 
-        Assert.assertArrayEquals(
+        Assertions.assertArrayEquals(
             Stream.of( true, true ).toArray(),
             l_return.stream().map( ITerm::raw ).toArray()
         );
@@ -1404,7 +1404,7 @@ public final class TestCActionGraph extends IBaseTest
             l_return
         );
 
-        Assert.assertArrayEquals(
+        Assertions.assertArrayEquals(
             Stream.of( true, false ).toArray(),
             l_return.stream().map( ITerm::raw ).toArray()
         );
@@ -1429,8 +1429,8 @@ public final class TestCActionGraph extends IBaseTest
             l_return
         );
 
-        Assert.assertEquals( 2, l_return.size() );
-        Assert.assertArrayEquals( Stream.of( 2, 3 ).toArray(), l_return.stream().map( ITerm::raw ).toArray() );
+        Assertions.assertEquals( 2, l_return.size() );
+        Assertions.assertArrayEquals( Stream.of( 2, 3 ).toArray(), l_return.stream().map( ITerm::raw ).toArray() );
     }
 
 
@@ -1452,8 +1452,8 @@ public final class TestCActionGraph extends IBaseTest
             l_return
         );
 
-        Assert.assertEquals( 2, l_return.size() );
-        Assert.assertArrayEquals( Stream.of( 2, 4 ).toArray(), l_return.stream().map( ITerm::raw ).toArray() );
+        Assertions.assertEquals( 2, l_return.size() );
+        Assertions.assertArrayEquals( Stream.of( 2, 4 ).toArray(), l_return.stream().map( ITerm::raw ).toArray() );
     }
 
 
@@ -1478,9 +1478,9 @@ public final class TestCActionGraph extends IBaseTest
             l_return
         );
 
-        Assert.assertEquals( 2, l_return.size() );
-        Assert.assertArrayEquals( Stream.of( "outedgesingle2", "outedgesingle1" ).toArray(), l_return.get( 0 ).<List<?>>raw().toArray() );
-        Assert.assertArrayEquals( Stream.of( "outedgesingle4", "outedgesingle3" ).toArray(), l_return.get( 1 ).<List<?>>raw().toArray() );
+        Assertions.assertEquals( 2, l_return.size() );
+        Assertions.assertArrayEquals( Stream.of( "outedgesingle2", "outedgesingle1" ).toArray(), l_return.get( 0 ).<List<?>>raw().toArray() );
+        Assertions.assertArrayEquals( Stream.of( "outedgesingle4", "outedgesingle3" ).toArray(), l_return.get( 1 ).<List<?>>raw().toArray() );
 
 
         l_return.clear();
@@ -1491,11 +1491,11 @@ public final class TestCActionGraph extends IBaseTest
             l_return
         );
 
-        Assert.assertEquals( 2, l_return.size() );
-        Assert.assertArrayEquals( Stream.of( "outedgesingle2", "outedgesingle1" ).toArray(), l_return.get( 0 ).<List<?>>raw().toArray() );
-        Assert.assertArrayEquals( Stream.of( "outedgesingle4", "outedgesingle3" ).toArray(), l_return.get( 1 ).<List<?>>raw().toArray() );
-        Assert.assertEquals( Collections.synchronizedList( Collections.emptyList() ).getClass(), l_return.get( 0 ).raw().getClass() );
-        Assert.assertEquals( Collections.synchronizedList( Collections.emptyList() ).getClass(), l_return.get( 1 ).raw().getClass() );
+        Assertions.assertEquals( 2, l_return.size() );
+        Assertions.assertArrayEquals( Stream.of( "outedgesingle2", "outedgesingle1" ).toArray(), l_return.get( 0 ).<List<?>>raw().toArray() );
+        Assertions.assertArrayEquals( Stream.of( "outedgesingle4", "outedgesingle3" ).toArray(), l_return.get( 1 ).<List<?>>raw().toArray() );
+        Assertions.assertEquals( Collections.synchronizedList( Collections.emptyList() ).getClass(), l_return.get( 0 ).raw().getClass() );
+        Assertions.assertEquals( Collections.synchronizedList( Collections.emptyList() ).getClass(), l_return.get( 1 ).raw().getClass() );
     }
 
 
@@ -1519,9 +1519,9 @@ public final class TestCActionGraph extends IBaseTest
             l_return
         );
 
-        Assert.assertEquals( 2, l_return.size() );
-        Assert.assertArrayEquals( Stream.of( "outedgemultiple2", "outedgemultiple1" ).toArray(), l_return.get( 0 ).<List<?>>raw().toArray() );
-        Assert.assertArrayEquals( Stream.of( "outedgemultiple4", "outedgemultiple3" ).toArray(), l_return.get( 1 ).<List<?>>raw().toArray() );
+        Assertions.assertEquals( 2, l_return.size() );
+        Assertions.assertArrayEquals( Stream.of( "outedgemultiple2", "outedgemultiple1" ).toArray(), l_return.get( 0 ).<List<?>>raw().toArray() );
+        Assertions.assertArrayEquals( Stream.of( "outedgemultiple4", "outedgemultiple3" ).toArray(), l_return.get( 1 ).<List<?>>raw().toArray() );
 
 
         l_return.clear();
@@ -1532,11 +1532,11 @@ public final class TestCActionGraph extends IBaseTest
             l_return
         );
 
-        Assert.assertEquals( 2, l_return.size() );
-        Assert.assertArrayEquals( Stream.of( "outedgemultiple2", "outedgemultiple1" ).toArray(), l_return.get( 0 ).<List<?>>raw().toArray() );
-        Assert.assertArrayEquals( Stream.of( "outedgemultiple4", "outedgemultiple3" ).toArray(), l_return.get( 1 ).<List<?>>raw().toArray() );
-        Assert.assertEquals( Collections.synchronizedList( Collections.emptyList() ).getClass(), l_return.get( 0 ).raw().getClass() );
-        Assert.assertEquals( Collections.synchronizedList( Collections.emptyList() ).getClass(), l_return.get( 1 ).raw().getClass() );
+        Assertions.assertEquals( 2, l_return.size() );
+        Assertions.assertArrayEquals( Stream.of( "outedgemultiple2", "outedgemultiple1" ).toArray(), l_return.get( 0 ).<List<?>>raw().toArray() );
+        Assertions.assertArrayEquals( Stream.of( "outedgemultiple4", "outedgemultiple3" ).toArray(), l_return.get( 1 ).<List<?>>raw().toArray() );
+        Assertions.assertEquals( Collections.synchronizedList( Collections.emptyList() ).getClass(), l_return.get( 0 ).raw().getClass() );
+        Assertions.assertEquals( Collections.synchronizedList( Collections.emptyList() ).getClass(), l_return.get( 1 ).raw().getClass() );
     }
 
 
@@ -1561,8 +1561,8 @@ public final class TestCActionGraph extends IBaseTest
             l_return
         );
 
-        Assert.assertEquals( 2, l_return.size() );
-        Assert.assertArrayEquals( Stream.of( 1D, 2D ).toArray(), l_return.stream().map( ITerm::raw ).toArray() );
+        Assertions.assertEquals( 2, l_return.size() );
+        Assertions.assertArrayEquals( Stream.of( 1D, 2D ).toArray(), l_return.stream().map( ITerm::raw ).toArray() );
     }
 
 
@@ -1586,8 +1586,8 @@ public final class TestCActionGraph extends IBaseTest
             l_return
         );
 
-        Assert.assertEquals( 2, l_return.size() );
-        Assert.assertArrayEquals( Stream.of( 1D, 2D ).toArray(), l_return.stream().map( ITerm::raw ).toArray() );
+        Assertions.assertEquals( 2, l_return.size() );
+        Assertions.assertArrayEquals( Stream.of( 1D, 2D ).toArray(), l_return.stream().map( ITerm::raw ).toArray() );
     }
 
 
@@ -1610,8 +1610,8 @@ public final class TestCActionGraph extends IBaseTest
         );
 
 
-        Assert.assertEquals( 0, l_graph.getEdgeCount() );
-        Assert.assertArrayEquals( Stream.of( 2 ).toArray(), l_graph.getVertices().toArray() );
+        Assertions.assertEquals( 0, l_graph.getEdgeCount() );
+        Assertions.assertArrayEquals( Stream.of( 2 ).toArray(), l_graph.getVertices().toArray() );
     }
 
 
@@ -1637,11 +1637,11 @@ public final class TestCActionGraph extends IBaseTest
             Collections.emptyList()
         );
 
-        Assert.assertEquals( 0, l_graph1.getEdgeCount() );
-        Assert.assertEquals( 1, l_graph2.getEdgeCount() );
+        Assertions.assertEquals( 0, l_graph1.getEdgeCount() );
+        Assertions.assertEquals( 1, l_graph2.getEdgeCount() );
 
-        Assert.assertArrayEquals( Stream.of( 3, 7 ).toArray(), l_graph1.getVertices().toArray() );
-        Assert.assertArrayEquals( Stream.of( 1, 7 ).toArray(), l_graph2.getVertices().toArray() );
+        Assertions.assertArrayEquals( Stream.of( 3, 7 ).toArray(), l_graph1.getVertices().toArray() );
+        Assertions.assertArrayEquals( Stream.of( 1, 7 ).toArray(), l_graph2.getVertices().toArray() );
     }
 
 
@@ -1669,7 +1669,7 @@ public final class TestCActionGraph extends IBaseTest
             l_return
         );
 
-        Assert.assertArrayEquals( Stream.of( 3D, 2D ).toArray(), l_return.stream().map( ITerm::raw ).toArray() );
+        Assertions.assertArrayEquals( Stream.of( 3D, 2D ).toArray(), l_return.stream().map( ITerm::raw ).toArray() );
     }
 
 
@@ -1693,7 +1693,7 @@ public final class TestCActionGraph extends IBaseTest
             l_return
         );
 
-        Assert.assertArrayEquals( Stream.of( 3D, 1D ).toArray(), l_return.stream().map( ITerm::raw ).toArray() );
+        Assertions.assertArrayEquals( Stream.of( 3D, 1D ).toArray(), l_return.stream().map( ITerm::raw ).toArray() );
     }
 
 
@@ -1719,8 +1719,8 @@ public final class TestCActionGraph extends IBaseTest
             Collections.emptyList()
         );
 
-        Assert.assertArrayEquals( Stream.of( "removeedgesingle2", "removeedgesingle3" ).toArray(), l_graph1.getEdges().toArray() );
-        Assert.assertArrayEquals( Stream.of( "removeedgesingle5" ).toArray(), l_graph2.getEdges().toArray() );
+        Assertions.assertArrayEquals( Stream.of( "removeedgesingle2", "removeedgesingle3" ).toArray(), l_graph1.getEdges().toArray() );
+        Assertions.assertArrayEquals( Stream.of( "removeedgesingle5" ).toArray(), l_graph2.getEdges().toArray() );
     }
 
 
@@ -1744,7 +1744,7 @@ public final class TestCActionGraph extends IBaseTest
             Collections.emptyList()
         );
 
-        Assert.assertArrayEquals( Stream.of( "removeedgesingle1", "removeedgesingle4", "removeedgesingle3" ).toArray(), l_graph.getEdges().toArray() );
+        Assertions.assertArrayEquals( Stream.of( "removeedgesingle1", "removeedgesingle4", "removeedgesingle3" ).toArray(), l_graph.getEdges().toArray() );
     }
 
 }
